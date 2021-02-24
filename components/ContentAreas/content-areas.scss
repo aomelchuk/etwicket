@@ -1,0 +1,123 @@
+@import "./assets/_mixins.scss";
+
+.content-areas {
+  background-color: #F0F0F0;
+  position: relative;
+
+  .img-box {
+    width: toRem(810);
+    height: toRem(563);
+    z-index: 0;
+
+
+    &--right {
+      @include screen('mobile') {
+        width: 44%;
+        overflow: hidden;
+      }
+
+      img {
+        @include screen('desktop-x-lg') {
+          width: toRem(810*1.3);
+        }
+
+        @include screen('mobile') {
+          height: toRem(329);
+        }
+      }
+    }
+  }
+
+  &__info {
+
+    .mobile-br {
+      display: none;
+
+      @include screen('mobile') {
+        display: inline-block;
+      }
+    }
+
+    p {
+      font-size: toRem(16);
+      margin-top: toRem(24);
+      line-height: toRem(32);
+      max-width: toRem(313);
+
+      @include screen('mobile') {
+        font-size: toRem(12);
+        line-height: toRem(20);
+      }
+    }
+
+    .btn {
+      margin-top: toRem(32);
+
+      @include screen('mobile'){
+        height: toRem(40);
+      }
+    }
+  }
+
+  &__bgi {
+    @include screen('desktop-md') {
+      width: 590px;
+    }
+  }
+
+  @include screen('mobile') {
+    padding-bottom: toRem(100); //delete after slider added
+  }
+}
+
+.services {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: toRem(63);
+
+  @include screen('desktop-md') {
+    margin-top: 0;
+  }
+
+  @include screen('mobile') {
+    flex-direction: column;
+  }
+
+  &--desktop {
+    @include screen('mobile') {
+      display: none;
+    }
+  }
+}
+
+.service {
+  background-color: #fff;
+  width: 31.91%;
+  padding: toRem(32);
+  margin: toRem(8);
+  max-width: toRem(378);
+
+  @include screen('desktop-md') {
+    width: 31%;
+  }
+
+  @include screen('mobile') {
+    width: 100%;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: toRem(18);
+    line-height: toRem(32);
+    margin-top: toRem(24);
+  }
+
+  p {
+    margin-top: toRem(16);
+    line-height: toRem(24);
+  }
+}

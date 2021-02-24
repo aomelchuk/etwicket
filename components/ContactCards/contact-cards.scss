@@ -1,0 +1,62 @@
+@import "./assets/_mixins.scss";
+
+.contact-section {
+  padding: 0;
+  top: toRem(-100);
+  position: relative;
+
+  @include screen('desktop-x-lg') {
+    top: toRem(-100*1.5);
+  }
+
+  @include screen('mobile') {
+    top: 0;
+  }
+}
+
+.contact-cards {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @include screen('mobile') {
+    flex-direction: column;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    padding: toRem(20) toRem(48) toRem(40) toRem(20);
+
+    position: relative;
+    width: 32.5%;
+
+    background: #F4F6F7;
+
+    @include screen('mobile') {
+      width: 100%;
+      margin: toRem(4) 0;
+    }
+
+    &__i-wrapper {
+      width: toRem(80);
+    }
+
+    h3 {
+      font-weight: 500;
+      font-size: toRem(18);
+      line-height: toRem(32);
+      padding-top: toRem(24);
+    }
+
+    strong {
+      display: block;
+      padding: toRem(16) 0;
+    }
+
+    p {
+      font-size: toRem(14);
+      line-height: toRem(24);
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@import "./assets/_mixins.scss";
+
+.have-question {
+  position: relative;
+  background-color: #F0F0F0;
+  margin-bottom: toRem(255);
+  padding: 0;
+
+  &__info {
+    z-index: 1;
+
+    p {
+      font-size: toRem(16);
+      line-height: toRem(32);
+      max-width: toRem(358);
+      margin-top: toRem(24);
+
+      @include screen('mobile'){
+        font-size: toRem(12);
+        line-height: toRem(20);
+        margin-top: toRem(8);
+      }
+    }
+  }
+
+  .register-form-wrapper {
+    top: toRem(75);
+    z-index: 1;
+    position: relative;
+    float: right;
+    background: linear-gradient(
+        90.07deg
+      , #EEEEEE 6.57%, rgba(255, 255, 255, 0.3) 95.76%);
+  }
+
+  .container {
+    @include screen('mobile') {
+      flex-direction: column;
+      position: relative;
+    }
+  }
+
+  @include screen('mobile') {
+    margin-bottom: toRem(100);
+  }
+}
+.question-img-shadow {
+  bottom: -20%;
+  position: absolute;
+  z-index: 0;
+
+  img {
+    position: relative;
+    z-index: 0;
+
+    @include screen('desktop-md') {
+      height: toRem(288);
+    }
+
+    @include screen('mobile') {
+      height: toRem(288);
+    }
+  }
+
+  .img-shadow {
+    position: absolute;
+    top: toRem(40);
+    left: toRem(-40);
+    opacity: 0.7;
+    z-index: -1;
+  }
+
+  @include screen('mobile') {
+    width: 100%;
+    overflow: hidden;
+    top: toRem(150);
+    left: 0;
+  }
+}

@@ -1,0 +1,97 @@
+@import "./assets/_mixins.scss";
+
+.top-section {
+  top: toRem(56);
+  position: relative;
+  background:url('/img/mainbg.jpg');
+  background-size: cover;
+  width: 100%;
+  height: calc(100vh -  #{toRem(56)});
+  color: #ffffff;
+  display: flex;
+
+  @include screen('tablet') {
+    height: inherit;
+  }
+
+  @include screen('mobile') {
+    padding-top: 0;
+    height: inherit;
+    padding-bottom: toRem(32);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .text-wrapper {
+    width: 100%;
+    max-width: toRem(475);
+
+    h1 {
+      font-size: toRem(48);
+      line-height: toRem(56);
+      font-weight: 500;
+
+      @include screen('mobile') {
+        font-size: toRem(24);
+        line-height: toRem(32);
+      }
+    }
+
+    p {
+      margin-top: toRem(24);
+      font-size: toRem(16);
+      line-height: toRem(24);
+      width: 100%;
+      max-width: toRem(360);
+      color: #F8F8F8;
+    }
+
+    .btn-wrapper {
+      margin-top: toRem(48);
+    }
+
+    .btn {
+      padding: 0 toRem(40);
+      height: toRem(56);
+      font-size: toRem(16);
+
+      &_arrow {
+        padding-left: toRem(10);
+      }
+
+      @include screen('mobile') {
+        height: toRem(40);
+        font-size: toRem(14);
+      }
+    }
+  }
+
+  .container {
+    @include screen('tablet') {
+      flex-direction: column;
+    }
+
+    @include screen('mobile') {
+      flex-direction: column;
+    }
+  }
+
+  .form-wrapper {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @include screen('tablet') {
+      align-items: center;
+    }
+
+    @include screen('mobile') {
+      padding-top: toRem(40);
+    }
+  }
+}

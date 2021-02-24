@@ -1,0 +1,159 @@
+@import "./assets/_mixins.scss";
+
+.summarize {
+  overflow: hidden;
+  position: relative;
+  background-color: #F0F0F0;
+
+  @include screen('mobile') {
+    overflow: unset;
+    padding-bottom: toRem(250);
+    padding-top: toRem(20);
+  }
+
+  .container {
+    position: relative;
+  }
+
+  &__br {
+    display: none;
+
+    @include screen('mobile') {
+      display: block;
+    }
+  }
+
+  .img-box--left {
+    width: 76%;
+    max-width: toRem(1104);
+    height: toRem(498);
+    background-color: #131416;
+
+    @include screen('desktop-x-lg') {
+      max-width: toRem(1104*1.5);
+    }
+
+    @include screen('mobile') {
+      width: 100%;
+      height: toRem(289);
+      overflow: hidden;
+    }
+
+    img {
+
+      @include screen('mobile') {
+        height: toRem(289);
+        right: toRem(-130);
+        position: absolute;
+      }
+    }
+  }
+
+  &__info {
+    color: #ffffff;
+
+    h2 {
+      max-width: toRem(418);
+
+      @include screen('mobile') {
+        font-size: toRem(24);
+        line-height: toRem(32);
+      }
+    }
+
+    p {
+      margin-top: toRem(24);
+      max-width: toRem(440);
+      font-size: toRem(16);
+      line-height: toRem(32);
+
+      @include screen('mobile') {
+        font-size: toRem(12);
+        line-height: toRem(20);
+        margin-top: toRem(15);
+      }
+    }
+  }
+}
+
+.digits {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: toRem(62);
+  z-index: 1;
+  position: relative;
+  height: toRem(212);
+
+  @include screen('mobile') {
+    flex-wrap: wrap;
+    padding: 0;
+    height: inherit;
+    width: toRem(306);
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    background-image:url('/img/digits-bg.svg');
+    background-position: center center;
+    top: toRem(-10);
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: toRem(36);
+    line-height: toRem(32);
+    color: #131416;
+  }
+
+  &__text {
+    max-width: toRem(147);
+    font-size: toRem(16);
+    line-height: toRem(24);
+    margin-top: toRem(8);
+    color: #000;
+
+    @include screen('mobile') {
+      font-size: toRem(12);
+      line-height: toRem(20);
+      margin-top: 0;
+    }
+  }
+
+  &__item {
+    @include screen('mobile') {
+      width: 50%;
+      padding: toRem(32) toRem(24);
+    }
+
+    h3 {
+      @include screen('mobile') {
+        font-size: toRem(16);
+        line-height: toRem(32);
+      }
+    }
+  }
+}
+.vl {
+  width: toRem(1);
+  height: toRem(88);
+  background: #95A9B2;
+
+  @include screen('mobile') {
+    display: none;
+  }
+}
+
+.right-white-block {
+  height: toRem(212);
+  right: -50%;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  top: toRem(12);
+  z-index: 0;
+
+  @include screen('mobile') {
+    display: none;
+  }
+}

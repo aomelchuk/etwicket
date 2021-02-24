@@ -1,0 +1,77 @@
+@import "./assets/_mixins.scss";
+
+.img-shadow-wrapper {
+  position: relative;
+
+  img {
+    position: relative;
+    z-index: 10;
+
+    @include screen('desktop-md') {
+      width: toRem(390);
+    }
+  }
+
+  .img-shadow {
+    position: absolute;
+    top: toRem(40);
+    left: toRem(-40);
+    opacity: 0.7;
+    z-index: 0;
+  }
+
+  &__img--bottom {
+    margin-top: toRem(104);
+  }
+}
+.about-us {
+  .container {
+    margin-top: toRem(24);
+    margin-bottom: toRem(24);
+
+    @include screen('mobile') {
+      flex-direction: column;
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    margin-top: toRem(24);
+    font-size: toRem(16);
+    line-height: toRem(32);
+
+    @include screen('mobile') {
+      font-size: toRem(12);
+      line-height: toRem(20);
+      margin-top: toRem(16);
+    }
+  }
+
+  .btn {
+    margin-top: toRem(32);
+
+    @include screen('mobile') {
+      height: toRem(40);
+      margin-top: toRem(24);
+    }
+  }
+
+  &__img--bottom {
+    margin-top: toRem(104);
+
+    @include screen('desktop-md') {
+      width: 450px;
+    }
+
+    @include screen('mobile') {
+      width: 100%;
+      margin-top: toRem(32);
+    }
+  }
+
+  .first-img {
+    @include screen('mobile') {
+      display: none;
+    }
+  }
+}

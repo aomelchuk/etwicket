@@ -1,0 +1,64 @@
+@import "./assets/_mixins.scss";
+
+.map-section {
+  padding-top: 0;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 90%;
+  padding: toRem(72) 0;
+
+  @include screen('desktop-x-lg') {
+    padding: toRem(72*1.5) 0;
+  }
+
+  @include screen('mobile') {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+}
+
+.map {
+  width: 100%;
+  max-width: toRem(1127);
+  height: toRem(488);
+  padding-right: toRem(173);
+
+  @include screen('desktop-x-lg') {
+    max-width: toRem(1127*1.5);
+    padding-right: toRem(173*1.5);
+  }
+
+  @include screen('mobile') {
+    width: 100%;
+    padding: 0 12px;
+  }
+}
+
+.map-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &.desktop {
+    @include screen('mobile') {
+      display: none;
+    }
+  }
+
+  &.mobile {
+    display: none;
+
+    @include screen('mobile') {
+      display: block;
+    }
+  }
+
+  @include screen('mobile') {
+    width: 100%;
+    position: unset;
+    padding: 0 12px;
+  }
+}

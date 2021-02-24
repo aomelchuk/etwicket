@@ -1,0 +1,167 @@
+@import "./assets/_mixins.scss";
+
+.footer  {
+  width: 100%;
+  background-color: #131416;
+  color: #fff;
+  height: toRem(264);
+
+  hr {
+    border: none;
+    color: white;
+    background-color: white;
+    height: toRem(1);
+    opacity: 0.1;
+
+    &.hr-mobile {
+      display: none;
+
+      @include screen('mobile') {
+        display: block;
+      }
+    }
+  }
+
+  .top-menu {
+    li {
+      @include screen('mobile') {
+        padding-bottom: toRem(8);
+      }
+    }
+  }
+
+  .container  {
+    @include screen('mobile') {
+      padding: 0 toRem(12);
+    }
+  }
+
+  &__row {
+    min-height: toRem(100);
+    justify-content: space-between;
+    align-items: center;
+
+    &.contacts {
+      color: #F0F0F0;
+
+      @include screen('mobile') {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @include screen('mobile') {
+      min-height: inherit;
+      padding: toRem(16) 0;
+    }
+  }
+
+
+  @include screen('mobile') {
+    height: inherit;
+  }
+}
+
+.copyright {
+  background-color: #000;
+  color: #F0F0F0;
+
+  &__text {
+    @include screen('mobile') {
+      padding-top: toRem(20);
+    }
+  }
+
+  &__container {
+    height: toRem(56);
+    align-items: center;
+    justify-content: space-between;
+
+    &.container {
+      @include screen('mobile') {
+        flex-direction: column;
+        height: inherit;
+        padding: toRem(16) 0;
+        font-size: toRem(12);
+      }
+    }
+  }
+}
+
+.v-application .contact-item {
+  color: #F0F0F0;
+  display: flex;
+  align-items: center;
+
+  addr {
+    br {
+      display: none;
+      @include screen('mobile') {
+        display: block;
+      }
+    }
+  }
+
+  &__icon {
+    @include screen('mobile') {
+      width: toRem(40);
+    }
+  }
+
+  img {
+    margin-right: toRem(10);
+  }
+
+  >a {
+    color: #F0F0F0;
+    text-decoration: none;
+    &:visited {
+      color: #F0F0F0;
+    }
+  }
+
+  @include screen('mobile') {
+    padding: toRem(8) toRem(12);
+  }
+}
+
+.socials {
+  display: flex;
+
+  &__icon {
+    width: toRem(40);
+    height: toRem(40);
+    border-radius: toRem(20);
+    background-color: rgba(149, 169, 179, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: toRem(24);
+
+    @include screen('mobile') {
+      margin-left: toRem(12);
+      margin-right: toRem(12);
+    }
+  }
+
+  &--desktop {
+    @include screen('mobile') {
+      display: none;
+    }
+  }
+
+  &__mobile-wrap {
+    display: none;
+
+    @include  screen('mobile') {
+      display: flex;
+    }
+  }
+}
+
+.top-menu--footer {
+  @include screen('mobile') {
+    display: flex;
+    flex-direction: column;
+  }
+}

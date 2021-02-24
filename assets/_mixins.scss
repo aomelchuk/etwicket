@@ -1,0 +1,52 @@
+$main-fs: 16px;
+
+@function stripUnit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function toRem($pxValue) {
+  @return #{stripUnit($pxValue) / stripUnit($main-fs)}rem;
+}
+
+@mixin screen($size) {
+  $desktop-x-lg: "(min-width: 1905px)";
+  $desktop-lg: "(min-width: 1366px) and (max-width: 1904px)";
+  $desktop-md: "(min-width: 1024px) and (max-width: 1365px)";
+  $tablet: "(min-width: 768px) and (max-width: 1023px)";
+  $mobile: "(max-width: 767px)";
+
+  @if $size == desktop-x-lg {
+
+    @media only screen and #{$desktop-x-lg} {
+      @content;
+    }
+  }
+
+  @if $size == desktop-lg {
+
+    @media only screen and #{$desktop-lg} {
+      @content;
+    }
+  }
+  @if $size == desktop-md {
+
+    @media only screen and #{$desktop-md} {
+      @content;
+    }
+  }
+  @else if $size == tablet {
+    @media only screen and #{$tablet} {
+      @content;
+    }
+  }
+  @else if $size == mobile {
+    @media only screen and #{$mobile} {
+      @content;
+    }
+  }
+  @else {
+    @media only screen and (#{$size}) {
+      @content;
+    }
+  }
+}

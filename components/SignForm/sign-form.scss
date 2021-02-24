@@ -1,0 +1,90 @@
+@import "./assets/_mixins.scss";
+
+%glass_bg {
+  background: linear-gradient(130.07deg, #EEEEEE 6.57%, rgba(255, 255, 255, 0.15) 95.76%);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+}
+
+.register-form-wrapper {
+  @extend %glass_bg;
+  max-width: toRem(440);
+  width: 100%;
+  padding: toRem(32) toRem(48);
+
+  @include screen('mobile') {
+    padding: toRem(32);
+  }
+}
+.register-form-wrapper h2 {
+  font-size: toRem(24);
+  color: #131416;
+  text-align: center;
+  font-weight: 400;
+  line-height: 1;
+
+  @include screen('mobile') {
+    font-size: toRem(16);
+    line-height: toRem(32);
+  }
+}
+
+.register-form {
+  width: 100%;
+  margin-top: toRem(24);
+
+  @include screen('desktop-x-lg') {
+    margin-top: toRem(24*1.5);
+  }
+
+  @include screen('mobile') {
+    margin-top: toRem(16);
+  }
+
+  &_input {
+    height: toRem(54);
+    margin: toRem(8) 0;
+    padding: toRem(8) toRem(16);
+    border-radius: 0;
+    border-width:0;
+    background: #fff;
+    outline: 0;
+
+    &--first {
+      margin-top: 0;
+    }
+
+    @include screen('mobile') {
+      height: toRem(40);
+    }
+
+    &::placeholder {
+      color: #95A9B3;
+      font-size: toRem(14);
+    }
+  }
+
+  .sign-link, .forgot-pass {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .sign-link-wrapper {
+    font-size: toRem(12);
+    padding-top: toRem(16);
+  }
+
+  .forgot-pass {
+    font-size: toRem(12);
+    text-align: right;
+  }
+
+  .sign-btn {
+    margin-top: toRem(24);
+
+    @include screen('mobile') {
+      padding: 0;
+      height: toRem(40);
+    }
+  }
+}
