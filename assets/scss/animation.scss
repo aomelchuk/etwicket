@@ -1,0 +1,39 @@
+.show {
+  overflow: hidden;
+}
+
+.btn {
+  overflow: hidden;
+  position: relative;
+}
+.btn:hover {
+  border:1px solid #5e3380;
+  color: #5e3380;
+  transition:.5s color;
+  position: relative;
+  z-index: 10;
+}
+
+.btn:before {
+  border-radius: inherit;
+  bottom: 0;
+  color: inherit;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #fff;
+  width: 200%;
+  transform: rotate(-45deg) translateY(50%);
+  height: 350%;
+  transition: transform .5s ease-in-out;
+}
+
+.btn:hover:before {
+  opacity: 1;
+  transform: rotate(0deg) translateY(0);
+  transition: transform .5s ease-in-out;
+  z-index: -1;
+}

@@ -35,7 +35,7 @@
         </li>
       </nav>
 
-      <button class="btn sign-btn--desktop">
+      <button class="btn sign-btn--desktop" @click="openRegister">
         Sign up
       </button>
       <div class="hamburger-menu">
@@ -77,7 +77,7 @@
             <button class="btn btn--outlined">
               Sign in
             </button>
-            <button class="btn">
+            <button class="btn" @click="openRegister">
               Sign up
             </button>
           </div>
@@ -88,4 +88,14 @@
 </template>
 
 <style lang="scss" src="./header.scss"></style>
+
+<script>
+  export default {
+    methods: {
+      openRegister() {
+        this.$emit('openRegister')
+      }
+    },
+  }
+</script>
 

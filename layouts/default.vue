@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header/>
+    <Header @openRegister="openRegister"/>
     <nuxt/>
     <Footer/>
   </v-app>
@@ -14,6 +14,13 @@ export default {
   data () {
     return {
 
+    }
+  },
+  methods: {
+    openRegister() {
+      console.log('click')
+      console.log('this.$store.state.popupRegisterOpen ', this.$store.state.popupRegisterOpen)
+      this.$store.dispatch('changeRegisterPopup', true)
     }
   },
   components: {

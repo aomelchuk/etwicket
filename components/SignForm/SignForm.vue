@@ -21,7 +21,7 @@
       <button class="btn btn--big sign-btn">
         Sign in
       </button>
-      <div class="sign-link-wrapper text-center">Don’t have an account? <a href="#" class="sign-link">Sign up</a> </div>
+      <div class="sign-link-wrapper text-center">Don’t have an account? <a href="#" @click.prevent="openRegister" class="sign-link">Sign up</a> </div>
     </form>
   </div>
 </template>
@@ -32,6 +32,11 @@ export default {
   data() {
     return {
 
+    }
+  },
+  methods: {
+    openRegister() {
+      this.$emit('openRegister')
     }
   }
 }

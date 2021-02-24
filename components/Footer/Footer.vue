@@ -38,10 +38,10 @@
             <img src="img/icons/location.svg" alt="">
           </div>
 
-          <addr>
+          <span>
             73-81 Bucuresti-Ploiesti Road,<br>
             Building 4C, 4st Floor
-          </addr>
+          </span>
         </div>
         <div class="contact-item">
           <div class="contact-item__icon">

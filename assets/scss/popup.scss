@@ -1,0 +1,83 @@
+//popup
+.popup-checkbox, .popup {
+  //display: none;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //opacity: 0;
+  transition:opacity .5s;
+  z-index: 1000;
+  overflow: auto;
+}
+
+.popup:before {
+  display: block;
+  content: ' ';
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0, 0.8);
+  height: 200%;
+  overflow: auto;
+}
+
+.popup-content {
+  width: 80%;
+  min-width: 320px;
+  max-width: 328px;
+  height: fit-content;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #D9DDDF;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  padding: 16px 32px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.register-form-wrapper .popup-shower {
+  cursor: pointer;
+}
+
+.popup-shower:hover {
+  color: #00a;
+  text-decoration: underline;
+}
+
+.popup-closer {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popup-checkbox:checked + .popup {
+  opacity: 1;
+  display: block;
+}
+
+@media only screen and (max-width: 767px) {
+  .popup-content {
+    width: 99%;
+    top: 50px;
+  }
+}

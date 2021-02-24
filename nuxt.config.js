@@ -2,10 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: true,
-
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  mode: 'spa',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -31,6 +28,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/slick', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -44,11 +42,19 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/style-resources',
   ],
+
+  styleResources: {
+    // your settings here
+    scss: [
+      '~assets/scss/*.scss'
+    ]
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ['~/assets/scss/variables.scss'],
     theme: {
       dark: false,
       themes: {
@@ -67,22 +73,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extractCSS: true,
-    filenames: {
-      css:  'css/[name].css'
-    },
-    html: {
-      minify: {
-        collapseBooleanAttributes: false,
-        decodeEntities: false,
-        minifyCSS: false,
-        minifyJS: false,
-        processConditionalComments: false,
-        removeEmptyAttributes: false,
-        removeRedundantAttributes: false,
-        trimCustomFragments: false,
-        useShortDoctype: false
-      }
-    }
+
   }
 }
