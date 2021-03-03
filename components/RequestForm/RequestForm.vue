@@ -1,5 +1,5 @@
 <template>
-  <div class="register-form-wrapper">
+  <div class="register-form-wrapper" id="reqForm">
     <h2>Send your request</h2>
     <form
       class="register-form d-flex flex-column"
@@ -29,3 +29,24 @@
 </template>
 
 <style lang="scss" src="./request-form.scss"></style>
+
+
+<script>
+export default {
+  mounted() {
+    const animationSettings = {
+      duration: 500,
+      offset: 0,
+      triggerHook: 1,
+      triggerElement: '#reqForm',
+      reverse: false
+    }
+
+    const scene35 = this.$scrollmagic.scene(animationSettings)
+      .setTween(
+        TweenMax.fromTo('#reqForm', 1, {css:{opacity:0}}, {css:{opacity: 1}})
+      )
+    this.$scrollmagic.addScene(scene35)
+  }
+}
+</script>

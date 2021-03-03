@@ -1,25 +1,29 @@
 <template>
-  <section class="content-areas">
-    <div class="img-box--right">
-      <img src="img/content-areas.png" class="content-areas__bgi" alt="">
+  <section class="content-areas" id="trigger3">
+    <div class="img-box--right show" id="contentAreaBg">
+      <img src="img/content-areas.png" ref="contentAreaImg" class="content-areas__bgi" alt="">
     </div>
     <div class="container d-flex">
       <div class="col-lg-4 col-md-6 col-7 content-areas__info">
-        <h2>
-          Our <br class="mobile-br"> content areas
-        </h2>
-        <p>
-          We have both wide range of content and flexible picing.
-        </p>
-        <button class="btn btn--big">
-          Explore
-        </button>
+        <div class="show" id="contentAreaText">
+          <div>
+            <h2>
+              Our <br class="mobile-br"> content areas
+            </h2>
+            <p>
+              We have both wide range of content and flexible picing.
+            </p>
+            <button class="btn btn--big">
+              Explore
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="container">
 
-      <div class="services services--desktop">
+      <div class="services services--desktop" ref="services">
         <div class="service">
           <img src="img/service/car.svg" alt="">
           <h3>Cars Rental</h3>
@@ -189,6 +193,43 @@ export default {
         dots: true
       }
     }
+  },
+  mounted() {
+    const animationSettings = {
+      duration: 500,
+      offset: 100,
+      triggerHook: 0.9,
+      triggerElement: '#trigger3',
+      reverse: false
+    }
+
+    // Declare Scene
+    const scene5 = this.$scrollmagic.scene(animationSettings)
+      .setTween(
+        TweenMax.fromTo('#contentAreaText', 1, {css:{width:0}}, {css:{width:'100%'}})
+      )
+    console.log('this.$refs.contentAreaImg ', this.$refs.contentAreaImg.clientWidth)
+    const scene6 = this.$scrollmagic.scene(animationSettings)
+      .setTween(
+        TweenMax.fromTo('#contentAreaBg', 1,
+          {css:{width: 0, right: this.$refs.contentAreaImg.clientWidth }},
+          {css:{right: 0, width: this.$refs.contentAreaImg.clientWidth}})
+      )
+
+    /*const scene7 = this.$scrollmagic.scene(animationSettings)
+
+    this.$refs.services.children.forEach((service, index) => {
+      let offset = window.innerHeight
+      console.log('service ', service)
+      scene7.setTween(
+        TweenMax.fromTo(service, .3*(index%3 + 1), {css:{bottom: -offset}}, {css:{bottom:0}})
+      )
+    })
+    this.$scrollmagic.addScene(scene7)*/
+
+    this.$scrollmagic.addScene(scene5)
+    this.$scrollmagic.addScene(scene6)
+
   }
 }
 </script>
