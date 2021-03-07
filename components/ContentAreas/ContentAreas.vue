@@ -1,7 +1,7 @@
 <template>
   <section class="content-areas" id="trigger3">
-    <div class="img-box--right show" id="contentAreaBg">
-      <img src="img/content-areas.png" ref="contentAreaImg" class="content-areas__bgi" alt="">
+    <div class="img-box--right show" id="contentAreaBg" >
+      <img src="img/content-areas.png" class="content-areas__bgi" ref="contentAreaImg"  @load="onLoad" alt=""/>
     </div>
     <div class="container d-flex">
       <div class="col-lg-4 col-md-6 col-7 content-areas__info">
@@ -195,8 +195,11 @@ export default {
   },
   mounted() {
     const contentAreaTextWidth = this.$refs.contentAreaText.clientWidth
+
+    console.log('contentAreaTextWidth ', contentAreaTextWidth)
     this.$refs.contentAreaText.children[0].style.width = contentAreaTextWidth+'px'
-    console.log('this.$refs.contentAreaImg ', this.$refs.contentAreaImg.clientWidth)
+
+
 
     const animationSettings = {
       duration: 500,
@@ -212,12 +215,7 @@ export default {
         TweenMax.fromTo('#contentAreaText', 1, {css:{width:0}}, {css:{width:'100%'}})
       )
 
-    const scene6 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#contentAreaBg', 1,
-          {css:{width: 0, right: this.$refs.contentAreaImg.clientWidth }},
-          {css:{right: 0, width: this.$refs.contentAreaImg.clientWidth}})
-      )
+
 
 
 
@@ -236,8 +234,29 @@ export default {
 
 
     this.$scrollmagic.addScene(scene5)
-    this.$scrollmagic.addScene(scene6)
 
+
+  },
+  methods: {
+    onLoad() {
+
+      const contentAreaImg = this.$refs.contentAreaImg
+      console.log('contentAreaImg ', contentAreaImg.width)
+      const scene6 = this.$scrollmagic.scene({
+        duration: 500,
+        offset: 100,
+        triggerHook: 0.5,
+        triggerElement: '#trigger3',
+        reverse: false
+      })
+        .setTween(
+          TweenMax.fromTo('#contentAreaBg', 1,
+            {css:{width: 0, right: contentAreaImg.width }},
+            {css:{right: 0, width: contentAreaImg.width}})
+        )
+
+      this.$scrollmagic.addScene(scene6)
+    }
   }
 }
 </script>

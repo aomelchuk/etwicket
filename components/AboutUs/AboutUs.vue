@@ -28,7 +28,7 @@
           </div>
         </div>
         <div id="aboutBottom" class="show">
-          <img src="img/about-us-2.png" class="about-us__img--bottom" alt="">
+          <img ref="aboutBottom"  src="img/about-us-2.png" class="about-us__img--bottom" alt="">
         </div>
       </div>
     </div>
@@ -43,6 +43,8 @@ export default {
   mounted() {
     const aboutTextWidth = this.$refs.aboutUsText.clientWidth
     this.$refs.aboutUsText.children[0].style.width = aboutTextWidth+'px'
+    const aboutBottomHeight = this.$refs.aboutBottom.naturalHeight + 'px'
+
     const animationSettings = {
       duration: 500,
       offset: 100,
@@ -69,8 +71,8 @@ export default {
     })
       .setTween(
         TweenMax.fromTo('#aboutBottom', 1,
-          {css:{width:0, height:aboutBottom.height}},
-          {css:{width:'100%', height:aboutBottom.height}}
+          {css:{width:0}},
+          {css:{width:'100%'}}
         )
       )
 
