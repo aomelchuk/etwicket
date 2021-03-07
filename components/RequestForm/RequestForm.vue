@@ -35,9 +35,9 @@
 export default {
   mounted() {
     const animationSettings = {
-      duration: 500,
+      duration: 300,
       offset: 0,
-      triggerHook: 1,
+      triggerHook: .5,
       triggerElement: '#reqForm',
       reverse: false
     }

@@ -2,7 +2,7 @@
   <section class="have-question" id="haveQuestionTrigger">
     <div class="container d-flex">
       <div class="col-md-6 col-sm-12 have-question__info">
-        <div class="show" id="questionText">
+        <div class="show" id="questionText" ref="questionText">
           <div>
             <h2>Have a questions?</h2>
             <p>
@@ -31,6 +31,9 @@ import SignForm from '@/components/RequestForm/RequestForm.vue'
 
 export default {
   mounted() {
+    const questionTextWidth = this.$refs.questionText.clientWidth
+    this.$refs.questionText.children[0].style.width = questionTextWidth+'px'
+
     const animationSettings = {
       duration: 500,
       offset: 100,

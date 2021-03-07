@@ -6,11 +6,13 @@
           <div class="show" id="aboutImg">
             <img src="img/about-us-1.png" alt="">
           </div>
-          <img src="img/transparent_rect.png" class="img-shadow" alt="">
+          <div class="show img-shadow" id="aboutImgSh">
+            <img src="img/transparent_rect.png"  alt="">
+          </div>
         </div>
       </div>
       <div class="col-md-6 col-sm-12 about-us__info">
-        <div class="show" id="aboutUsText">
+        <div class="show" id="aboutUsText"  ref="aboutUsText">
           <div>
             <h2>
               About us
@@ -39,6 +41,8 @@
 import { TweenMax } from 'gsap'
 export default {
   mounted() {
+    const aboutTextWidth = this.$refs.aboutUsText.clientWidth
+    this.$refs.aboutUsText.children[0].style.width = aboutTextWidth+'px'
     const animationSettings = {
       duration: 500,
       offset: 100,
@@ -53,11 +57,16 @@ export default {
       )
     const scene3 = this.$scrollmagic.scene(animationSettings)
       .setTween(
-        TweenMax.fromTo('#aboutImg', 1, {css:{width:0}}, {css:{width:'100%'}})
+        TweenMax.fromTo(['#aboutImg','#aboutImgSh'], 1, {css:{width:0}}, {css:{width:'100%'}})
       )
 
-    const scene4 = this.$scrollmagic.scene(animationSettings)
-      .addIndicators({ name: '2 (duration: 300)' })
+    const scene4 = this.$scrollmagic.scene({
+      duration: 500,
+      offset: 100,
+      triggerHook: 0.2,
+      triggerElement: '#trigger2',
+      reverse: false
+    })
       .setTween(
         TweenMax.fromTo('#aboutBottom', 1,
           {css:{width:0, height:aboutBottom.height}},

@@ -5,7 +5,7 @@
     </div>
     <div class="container d-flex">
       <div class="col-lg-4 col-md-6 col-7 content-areas__info">
-        <div class="show" id="contentAreaText">
+        <div class="show" id="contentAreaText" ref="contentAreaText">
           <div>
             <h2>
               Our <br class="mobile-br"> content areas
@@ -190,11 +190,14 @@ export default {
       carouselOptions: {
         centerMode: true,
         navButtons: false,
-        dots: true
       }
     }
   },
   mounted() {
+    const contentAreaTextWidth = this.$refs.contentAreaText.clientWidth
+    this.$refs.contentAreaText.children[0].style.width = contentAreaTextWidth+'px'
+    console.log('this.$refs.contentAreaImg ', this.$refs.contentAreaImg.clientWidth)
+
     const animationSettings = {
       duration: 500,
       offset: 100,
@@ -208,7 +211,7 @@ export default {
       .setTween(
         TweenMax.fromTo('#contentAreaText', 1, {css:{width:0}}, {css:{width:'100%'}})
       )
-    console.log('this.$refs.contentAreaImg ', this.$refs.contentAreaImg.clientWidth)
+
     const scene6 = this.$scrollmagic.scene(animationSettings)
       .setTween(
         TweenMax.fromTo('#contentAreaBg', 1,
@@ -216,16 +219,21 @@ export default {
           {css:{right: 0, width: this.$refs.contentAreaImg.clientWidth}})
       )
 
-    /*const scene7 = this.$scrollmagic.scene(animationSettings)
+
 
     this.$refs.services.children.forEach((service, index) => {
-      let offset = window.innerHeight
-      console.log('service ', service)
-      scene7.setTween(
-        TweenMax.fromTo(service, .3*(index%3 + 1), {css:{bottom: -offset}}, {css:{bottom:0}})
+      let scene7 = this.$scrollmagic.scene({
+        duration: 500,
+        triggerHook: 0.5 - index*0.09,
+        triggerElement: '#trigger3',
+        reverse: false
+      })
+        .setTween(
+        TweenMax.to(service, 1, {css: {transform: "translateY(0)"}})
       )
+      this.$scrollmagic.addScene(scene7)
     })
-    this.$scrollmagic.addScene(scene7)*/
+
 
     this.$scrollmagic.addScene(scene5)
     this.$scrollmagic.addScene(scene6)
