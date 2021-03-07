@@ -115,6 +115,10 @@
   max-width: toRem(378);
   position: relative;
 
+  //for animation
+  transform: translateY(300px);
+  transition: transform .5s;
+
   &:hover{
     background: #5E3380;
     transition:opacity .5s;

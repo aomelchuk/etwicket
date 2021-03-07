@@ -2,7 +2,7 @@
   <section class="top-section">
     <div class="container d-flex">
       <div class="col-xl-6 col-md-6 col-sm-12 top-section__info">
-        <div class="text-wrapper">
+        <div class="text-wrapper" id="#trigger2" ref="trigger2" >
           <h1>Simplifying <br> your business trip</h1>
           <p>
             We make it simple to launch in the cloud and scale up as you grow – with an intuitive control panel, predictable pricing, team accounts, and more.

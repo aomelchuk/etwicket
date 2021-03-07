@@ -1,25 +1,29 @@
 <template>
-  <section class="content-areas">
-    <div class="img-box--right">
-      <img src="img/content-areas.png" class="content-areas__bgi" alt="">
+  <section class="content-areas" id="trigger3">
+    <div class="img-box--right show" id="contentAreaBg" >
+      <img src="img/content-areas.png" class="content-areas__bgi" ref="contentAreaImg"  @load="onLoad" alt=""/>
     </div>
     <div class="container d-flex">
       <div class="col-lg-4 col-md-6 col-7 content-areas__info">
-        <h2>
-          Our <br class="mobile-br"> content areas
-        </h2>
-        <p>
-          We have both wide range of content and flexible picing.
-        </p>
-        <button class="btn btn--big">
-          Explore
-        </button>
+        <div class="show" id="contentAreaText" ref="contentAreaText">
+          <div>
+            <h2>
+              Our <br class="mobile-br"> content areas
+            </h2>
+            <p>
+              We have both wide range of content and flexible picing.
+            </p>
+            <button class="btn btn--big">
+              Explore
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="container">
 
-      <div class="services services--desktop">
+      <div class="services services--desktop" ref="services">
         <div class="service">
           <img src="img/service/car.svg" alt="">
           <h3>Cars Rental</h3>
@@ -186,8 +190,72 @@ export default {
       carouselOptions: {
         centerMode: true,
         navButtons: false,
-        dots: true
       }
+    }
+  },
+  mounted() {
+    const contentAreaTextWidth = this.$refs.contentAreaText.clientWidth
+
+    console.log('contentAreaTextWidth ', contentAreaTextWidth)
+    this.$refs.contentAreaText.children[0].style.width = contentAreaTextWidth+'px'
+
+
+
+    const animationSettings = {
+      duration: 500,
+      offset: 100,
+      triggerHook: 0.9,
+      triggerElement: '#trigger3',
+      reverse: false
+    }
+
+    // Declare Scene
+    const scene5 = this.$scrollmagic.scene(animationSettings)
+      .setTween(
+        TweenMax.fromTo('#contentAreaText', 1, {css:{width:0}}, {css:{width:'100%'}})
+      )
+
+
+
+
+
+    this.$refs.services.children.forEach((service, index) => {
+      let scene7 = this.$scrollmagic.scene({
+        duration: 500,
+        triggerHook: 0.5 - index*0.09,
+        triggerElement: '#trigger3',
+        reverse: false
+      })
+        .setTween(
+        TweenMax.to(service, 1, {css: {transform: "translateY(0)"}})
+      )
+      this.$scrollmagic.addScene(scene7)
+    })
+
+
+    this.$scrollmagic.addScene(scene5)
+
+
+  },
+  methods: {
+    onLoad() {
+
+      const contentAreaImg = this.$refs.contentAreaImg
+      console.log('contentAreaImg ', contentAreaImg.width)
+      const scene6 = this.$scrollmagic.scene({
+        duration: 500,
+        offset: 100,
+        triggerHook: 0.5,
+        triggerElement: '#trigger3',
+        reverse: false
+      })
+        .setTween(
+          TweenMax.fromTo('#contentAreaBg', 1,
+            {css:{width: 0, right: contentAreaImg.width }},
+            {css:{right: 0, width: contentAreaImg.width}})
+        )
+
+      this.$scrollmagic.addScene(scene6)
     }
   }
 }

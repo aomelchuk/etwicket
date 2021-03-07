@@ -78,8 +78,8 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #fff;
-  padding: toRem(62);
   z-index: 1;
   position: relative;
   height: toRem(212);
@@ -119,6 +119,8 @@
   }
 
   &__item {
+    padding: toRem(62);
+
     @include screen('mobile') {
       width: 50%;
       padding: toRem(32) toRem(24);
