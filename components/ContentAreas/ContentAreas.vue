@@ -184,7 +184,10 @@
 <style lang="scss" src="./content-areas.scss"></style>
 
 <script>
+import animation from '@/mixins/animation.js'
+
 export default {
+  mixins: [animation],
   data() {
     return {
       carouselOptions: {
@@ -195,11 +198,7 @@ export default {
   },
   mounted() {
     const contentAreaTextWidth = this.$refs.contentAreaText.clientWidth
-
-    console.log('contentAreaTextWidth ', contentAreaTextWidth)
     this.$refs.contentAreaText.children[0].style.width = contentAreaTextWidth+'px'
-
-
 
     const animationSettings = {
       duration: 500,
@@ -215,10 +214,6 @@ export default {
         TweenMax.fromTo('#contentAreaText', 1, {css:{width:0}}, {css:{width:'100%'}})
       )
 
-
-
-
-
     this.$refs.services.children.forEach((service, index) => {
       let scene7 = this.$scrollmagic.scene({
         duration: 500,
@@ -229,13 +224,11 @@ export default {
         .setTween(
         TweenMax.to(service, 1, {css: {transform: "translateY(0)"}})
       )
-      this.$scrollmagic.addScene(scene7)
+      this.animations.push(scene7)
     })
 
 
-    this.$scrollmagic.addScene(scene5)
-
-
+    this.animations.push(scene5)
   },
   methods: {
     onLoad() {
@@ -255,7 +248,8 @@ export default {
             {css:{right: 0, width: contentAreaImg.width}})
         )
 
-      this.$scrollmagic.addScene(scene6)
+      this.animations.push(scene6)
+      this.addScenes()
     }
   }
 }

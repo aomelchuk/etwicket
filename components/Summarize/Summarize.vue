@@ -50,7 +50,10 @@
 <style lang="scss" src="./summarize.scss"></style>
 
 <script>
+import animation from '@/mixins/animation.js'
+
 export default {
+  mixins: [animation],
   mounted() {
     const summarizeTextWidth = this.$refs.summarizeText.clientWidth
     this.$refs.summarizeText.children[0].style.width = summarizeTextWidth+'px'
@@ -99,10 +102,11 @@ export default {
           {css:{width:0, right: '100%'}}, {css:{width: rwbWidth, right: '-50%'}})
       )
 
-    this.$scrollmagic.addScene(scene2)
-    this.$scrollmagic.addScene(scene3)
-    this.$scrollmagic.addScene(scene44)
-    this.$scrollmagic.addScene(scene6)
+    this.animations.push(scene2)
+    this.animations.push(scene3)
+    this.animations.push(scene44)
+    this.animations.push(scene6)
+    this.addScenes()
   }
 }
 </script>

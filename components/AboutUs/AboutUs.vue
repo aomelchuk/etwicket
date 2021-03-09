@@ -39,7 +39,10 @@
 
 <script>
 import { TweenMax } from 'gsap'
+import animation from '@/mixins/animation.js'
+
 export default {
+  mixins: [animation],
   mounted() {
     const aboutTextWidth = this.$refs.aboutUsText.clientWidth
     this.$refs.aboutUsText.children[0].style.width = aboutTextWidth+'px'
@@ -77,9 +80,10 @@ export default {
       )
 
     // Add Scene to controller
-    this.$scrollmagic.addScene(scene2)
-    this.$scrollmagic.addScene(scene3)
-    this.$scrollmagic.addScene(scene4)
+    this.animations.push(scene2)
+    this.animations.push(scene3)
+    this.animations.push(scene4)
+    this.addScenes()
   }
 }
 </script>

@@ -28,8 +28,10 @@
 
 <script>
 import SignForm from '@/components/RequestForm/RequestForm.vue'
+import animation from '@/mixins/animation.js'
 
 export default {
+  mixins: [animation],
   mounted() {
     const questionTextWidth = this.$refs.questionText.clientWidth
     this.$refs.questionText.children[0].style.width = questionTextWidth+'px'
@@ -59,10 +61,10 @@ export default {
       )
 
 
-    this.$scrollmagic.addScene(scene34)
-
-    this.$scrollmagic.addScene(scene36)
-    this.$scrollmagic.addScene(scene37)
+    this.animations.push(scene34)
+    this.animations.push(scene36)
+    this.animations.push(scene37)
+    this.addScenes()
   },
   components: {
     SignForm
