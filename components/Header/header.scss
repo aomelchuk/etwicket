@@ -222,10 +222,15 @@ header .container {
   color: #fff;
 }
 
+.top-menu--footer .submenu li a{
+  color: #131416;
+}
+
 .submenu-link {
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
 
   img {
     margin-top: toRem(2);
@@ -243,7 +248,7 @@ header .container {
 .submenu {
   background: #fff;
   position: absolute;
-  left: 0;
+  left: toRem(-26);
   top: 100%;
   z-index: 5;
   opacity: 0;
@@ -266,6 +271,10 @@ header .container {
       padding: toRem(8) toRem(40);
       border-bottom: 1px solid rgba(255, 255, 255, .1);
       font-weight: 400;
+    }
+
+    &:hover {
+      background-color: #f4f6f7;
     }
   }
 
