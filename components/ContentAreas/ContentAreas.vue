@@ -229,6 +229,7 @@ export default {
 
 
     this.animations.push(scene5)
+    //this.addScenes()
   },
   methods: {
     onLoad() {

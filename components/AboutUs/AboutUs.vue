@@ -44,45 +44,47 @@ import animation from '@/mixins/animation.js'
 export default {
   mixins: [animation],
   mounted() {
-    const aboutTextWidth = this.$refs.aboutUsText.clientWidth
-    this.$refs.aboutUsText.children[0].style.width = aboutTextWidth+'px'
-    const aboutBottomHeight = this.$refs.aboutBottom.naturalHeight + 'px'
+    if (!this.isMobile) {
+      const aboutTextWidth = this.$refs.aboutUsText.clientWidth
+      this.$refs.aboutUsText.children[0].style.width = aboutTextWidth+'px'
+      const aboutBottomHeight = this.$refs.aboutBottom.naturalHeight + 'px'
 
-    const animationSettings = {
-      duration: 500,
-      offset: 100,
-      triggerHook: 0.9,
-      triggerElement: '#trigger2',
-      reverse: false
-    }
-    // Declare Scene
-    const scene2 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#aboutUsText', 1, {css:{width:0}}, {css:{width:'100%'}})
-      )
-    const scene3 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo(['#aboutImg','#aboutImgSh'], 1, {css:{width:0}}, {css:{width:'100%'}})
-      )
-
-    const scene4 = this.$scrollmagic.scene({
-      duration: 500,
-      offset: 100,
-      triggerHook: 0.2,
-      triggerElement: '#trigger2',
-      reverse: false
-    })
-      .setTween(
-        TweenMax.fromTo('#aboutBottom', 1,
-          {css:{width:0}},
-          {css:{width:'100%'}}
+      const animationSettings = {
+        duration: 500,
+        offset: 100,
+        triggerHook: 0.9,
+        triggerElement: '#trigger2',
+        reverse: false
+      }
+      // Declare Scene
+      const scene2 = this.$scrollmagic.scene(animationSettings)
+        .setTween(
+          TweenMax.fromTo('#aboutUsText', 1, {css:{width:0}}, {css:{width:'100%'}})
         )
-      )
+      const scene3 = this.$scrollmagic.scene(animationSettings)
+        .setTween(
+          TweenMax.fromTo(['#aboutImg','#aboutImgSh'], 1, {css:{width:0}}, {css:{width:'100%'}})
+        )
 
-    // Add Scene to controller
-    this.animations.push(scene2)
-    this.animations.push(scene3)
-    this.animations.push(scene4)
+      const scene4 = this.$scrollmagic.scene({
+        duration: 500,
+        offset: 100,
+        triggerHook: 0.2,
+        triggerElement: '#trigger2',
+        reverse: false
+      })
+        .setTween(
+          TweenMax.fromTo('#aboutBottom', 1,
+            {css:{width:0}},
+            {css:{width:'100%'}}
+          )
+        )
+
+      // Add Scene to controller
+      this.animations.push(scene2)
+      this.animations.push(scene3)
+      this.animations.push(scene4)
+    }
     this.addScenes()
   }
 }
