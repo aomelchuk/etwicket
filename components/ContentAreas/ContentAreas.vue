@@ -184,7 +184,10 @@
 <style lang="scss" src="./content-areas.scss"></style>
 
 <script>
+import animation from '@/mixins/animation.js'
+
 export default {
+  mixins: [animation],
   data() {
     return {
       carouselOptions: {
@@ -194,68 +197,63 @@ export default {
     }
   },
   mounted() {
-    const contentAreaTextWidth = this.$refs.contentAreaText.clientWidth
+    if (!this.isMobile) {
+      const contentAreaTextWidth = this.$refs.contentAreaText.clientWidth
+      this.$refs.contentAreaText.children[0].style.width = contentAreaTextWidth+'px'
 
-    console.log('contentAreaTextWidth ', contentAreaTextWidth)
-    this.$refs.contentAreaText.children[0].style.width = contentAreaTextWidth+'px'
-
-
-
-    const animationSettings = {
-      duration: 500,
-      offset: 100,
-      triggerHook: 0.9,
-      triggerElement: '#trigger3',
-      reverse: false
-    }
-
-    // Declare Scene
-    const scene5 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#contentAreaText', 1, {css:{width:0}}, {css:{width:'100%'}})
-      )
-
-
-
-
-
-    this.$refs.services.children.forEach((service, index) => {
-      let scene7 = this.$scrollmagic.scene({
+      const animationSettings = {
         duration: 500,
-        triggerHook: 0.5 - index*0.09,
+        offset: 100,
+        triggerHook: 0.9,
         triggerElement: '#trigger3',
         reverse: false
-      })
+      }
+
+      // Declare Scene
+      const scene5 = this.$scrollmagic.scene(animationSettings)
         .setTween(
-        TweenMax.to(service, 1, {css: {transform: "translateY(0)"}})
-      )
-      this.$scrollmagic.addScene(scene7)
+          TweenMax.fromTo('#contentAreaText', 1, {css:{width:0}}, {css:{width:'100%'}})
+        )
+
+      this.$refs.services.children.forEach((service, index) => {
+        let scene7 = this.$scrollmagic.scene({
+          duration: 500,
+          triggerHook: 0.5 - index*0.09,
+          triggerElement: '#trigger3',
+          reverse: false
+        })
+          .setTween(
+            TweenMax.to(service, 1, {css: {transform: "translateY(0)"}})
+          )
+        this.animations.push(scene7)
     })
 
 
-    this.$scrollmagic.addScene(scene5)
-
-
+      this.animations.push(scene5)
+    }
+    this.addScenes()
   },
   methods: {
     onLoad() {
+      if (!this.isMobile) {
+        const contentAreaImg = this.$refs.contentAreaImg
+        console.log('contentAreaImg ', contentAreaImg.width)
+        const scene6 = this.$scrollmagic.scene({
+          duration: 500,
+          offset: 100,
+          triggerHook: 0.5,
+          triggerElement: '#trigger3',
+          reverse: false
+        })
+          .setTween(
+            TweenMax.fromTo('#contentAreaBg', 1,
+              {css:{width: 0, right: contentAreaImg.width }},
+              {css:{right: 0, width: contentAreaImg.width}})
+          )
 
-      const contentAreaImg = this.$refs.contentAreaImg
-      console.log('contentAreaImg ', contentAreaImg.width)
-      const scene6 = this.$scrollmagic.scene({
-        duration: 500,
-        offset: 100,
-        triggerHook: 0.5,
-        triggerElement: '#trigger3',
-        reverse: false
-      })
-        .setTween(
-          TweenMax.fromTo('#contentAreaBg', 1,
-            {css:{width: 0, right: contentAreaImg.width }},
-            {css:{right: 0, width: contentAreaImg.width}})
-        )
-
-      this.$scrollmagic.addScene(scene6)
+        this.animations.push(scene6)
+      }
+      this.addScenes()
     }
   }
 }

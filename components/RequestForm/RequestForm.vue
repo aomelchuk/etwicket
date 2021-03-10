@@ -32,21 +32,27 @@
 
 
 <script>
-export default {
-  mounted() {
-    const animationSettings = {
-      duration: 300,
-      offset: 0,
-      triggerHook: .5,
-      triggerElement: '#reqForm',
-      reverse: false
-    }
+import animation from '@/mixins/animation.js'
 
-    const scene35 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#reqForm', 1, {css:{opacity:0}}, {css:{opacity: 1}})
-      )
-    this.$scrollmagic.addScene(scene35)
+export default {
+  mixins: [animation],
+  mounted() {
+    if (!this.isMobile) {
+      const animationSettings = {
+        duration: 300,
+        offset: 0,
+        triggerHook: .5,
+        triggerElement: '#reqForm',
+        reverse: false
+      }
+
+      const scene35 = this.$scrollmagic.scene(animationSettings)
+        .setTween(
+          TweenMax.fromTo('#reqForm', 1, {css:{opacity:0}}, {css:{opacity: 1}})
+        )
+      this.animations.push(scene35)
+    }
+    this.addScenes()
   }
 }
 </script>

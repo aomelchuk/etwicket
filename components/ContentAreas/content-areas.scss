@@ -141,6 +141,8 @@
     margin: 0;
     height: toRem(350);
     margin-bottom: toRem(24);
+    transform: none;
+    transition: none;
   }
 
   h3 {

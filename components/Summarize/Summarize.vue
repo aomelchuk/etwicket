@@ -50,59 +50,65 @@
 <style lang="scss" src="./summarize.scss"></style>
 
 <script>
+import animation from '@/mixins/animation.js'
+
 export default {
+  mixins: [animation],
   mounted() {
-    const summarizeTextWidth = this.$refs.summarizeText.clientWidth
-    this.$refs.summarizeText.children[0].style.width = summarizeTextWidth+'px'
+    if (!this.isMobile) {
+      const summarizeTextWidth = this.$refs.summarizeText.clientWidth
+      this.$refs.summarizeText.children[0].style.width = summarizeTextWidth+'px'
 
-    const animationSettings = {
-      duration: 500,
-      offset: 100,
-      triggerHook: 0.9,
-      triggerElement: '#summarizeTrigger1',
-      reverse: false
+      const animationSettings = {
+        duration: 500,
+        offset: 100,
+        triggerHook: 0.9,
+        triggerElement: '#summarizeTrigger1',
+        reverse: false
+      }
+
+      const scene2 = this.$scrollmagic.scene(animationSettings)
+        .setTween(
+          TweenMax.fromTo('#SummarizeBg', 1, {css:{width:0}}, {css:{width:'76%'}})
+        )
+
+      const scene3 = this.$scrollmagic.scene(animationSettings)
+        .setTween(
+          TweenMax.fromTo('#summarizeText', 1, {css:{width:0}}, {css:{width:'100%'}})
+        )
+      const digitsWidth = this.$refs.digits.clientWidth
+      const rwbWidth =  this.$refs.rwb.clientWidth
+      const scene44 = this.$scrollmagic.scene({
+        duration: 500,
+        offset: 100,
+        triggerHook: 0.5,
+        triggerElement: '#summarizeTrigger1',
+        reverse: false
+      })
+        .setTween(
+          TweenMax.fromTo('#digits', 1,
+            {css:{width:0}},
+            {css:{width: '100%'}})
+        )
+
+      const scene6 = this.$scrollmagic.scene({
+        duration: 500,
+        offset: 100,
+        triggerHook: 0.5,
+        triggerElement: '#summarizeTrigger1',
+        reverse: false
+      })
+        .setTween(
+          TweenMax.fromTo('#rwb', 1,
+            {css:{width:0, right: '100%'}}, {css:{width: rwbWidth, right: '-50%'}})
+        )
+
+      this.animations.push(scene2)
+      this.animations.push(scene3)
+      this.animations.push(scene44)
+      this.animations.push(scene6)
     }
-
-    const scene2 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#SummarizeBg', 1, {css:{width:0}}, {css:{width:'76%'}})
-      )
-
-    const scene3 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#summarizeText', 1, {css:{width:0}}, {css:{width:'100%'}})
-      )
-    const digitsWidth = this.$refs.digits.clientWidth
-    const rwbWidth =  this.$refs.rwb.clientWidth
-    const scene44 = this.$scrollmagic.scene({
-      duration: 500,
-      offset: 100,
-      triggerHook: 0.5,
-      triggerElement: '#summarizeTrigger1',
-      reverse: false
-    })
-      .setTween(
-        TweenMax.fromTo('#digits', 1,
-        {css:{width:0}},
-        {css:{width: '100%'}})
-      )
-
-    const scene6 = this.$scrollmagic.scene({
-      duration: 500,
-      offset: 100,
-      triggerHook: 0.5,
-      triggerElement: '#summarizeTrigger1',
-      reverse: false
-    })
-      .setTween(
-        TweenMax.fromTo('#rwb', 1,
-          {css:{width:0, right: '100%'}}, {css:{width: rwbWidth, right: '-50%'}})
-      )
-
-    this.$scrollmagic.addScene(scene2)
-    this.$scrollmagic.addScene(scene3)
-    this.$scrollmagic.addScene(scene44)
-    this.$scrollmagic.addScene(scene6)
+    this.addScenes()
   }
 }
 </script>
