@@ -255,6 +255,7 @@ header .container {
   transform: scaleY(0);
   transform-origin: 0 0;
   transition: .5s ease-in-out;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 
   padding-left: 0 !important;
   width: toRem(256);
@@ -337,7 +338,7 @@ section h2 {
   }
 
   .top-menu li:first-child {
-    padding-left: toRem(16);
+    //padding-left: toRem(16);
   }
 
   .btn--clear {

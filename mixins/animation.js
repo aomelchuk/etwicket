@@ -16,10 +16,9 @@ export default {
       if (!newVal) {
         this.$scrollmagic.addScene(this.animations)
       } else {
-        //this.animations.forEach(scene => scene.progress(1))
-        this.$scrollmagic.destroy()
+        if (this.$scrollmagic) this.$scrollmagic.destroy()
         this.$scrollmagic = null
-        console.log('2this.$scrollmagic ', this.$scrollmagic)
+
       }
     }
   },
@@ -28,9 +27,8 @@ export default {
       if (!this.isMobile) {
         this.$scrollmagic.addScene(this.animations)
       } else {
-        this.$scrollmagic.destroy()
+        if (this.$scrollmagic) this.$scrollmagic.destroy()
         this.$scrollmagic = null
-        console.log('1this.$scrollmagic ', this.$scrollmagic)
       }
     }
   }

@@ -33,37 +33,40 @@ import animation from '@/mixins/animation.js'
 export default {
   mixins: [animation],
   mounted() {
-    const questionTextWidth = this.$refs.questionText.clientWidth
-    this.$refs.questionText.children[0].style.width = questionTextWidth+'px'
+    if (!this.isMobile) {
+      const questionTextWidth = this.$refs.questionText.clientWidth
+      this.$refs.questionText.children[0].style.width = questionTextWidth+'px'
 
-    const animationSettings = {
-      duration: 500,
-      offset: 100,
-      triggerHook: 0.9,
-      triggerElement: '#haveQuestionTrigger',
-      reverse: false
+      const animationSettings = {
+        duration: 500,
+        offset: 100,
+        triggerHook: 0.9,
+        triggerElement: '#haveQuestionTrigger',
+        reverse: false
+      }
+
+      const scene34 = this.$scrollmagic.scene(animationSettings)
+        .setTween(
+          TweenMax.fromTo('#questionText', 1, {css:{width:0}}, {css:{width:'100%'}})
+        )
+
+
+
+      const scene36 = this.$scrollmagic.scene(animationSettings)
+        .setTween(
+          TweenMax.fromTo('#requestImg', 1, {css:{width:0}}, {css:{width: '100%'}})
+        )
+      const scene37 = this.$scrollmagic.scene(animationSettings)
+        .setTween(
+          TweenMax.fromTo('#requestImgShadow', 1, {css:{width:0}}, {css:{width: '100%'}})
+        )
+
+
+      this.animations.push(scene34)
+      this.animations.push(scene36)
+      this.animations.push(scene37)
     }
 
-    const scene34 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#questionText', 1, {css:{width:0}}, {css:{width:'100%'}})
-      )
-
-
-
-    const scene36 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#requestImg', 1, {css:{width:0}}, {css:{width: '100%'}})
-      )
-    const scene37 = this.$scrollmagic.scene(animationSettings)
-      .setTween(
-        TweenMax.fromTo('#requestImgShadow', 1, {css:{width:0}}, {css:{width: '100%'}})
-      )
-
-
-    this.animations.push(scene34)
-    this.animations.push(scene36)
-    this.animations.push(scene37)
     this.addScenes()
   },
   components: {
