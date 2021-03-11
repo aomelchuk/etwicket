@@ -22,7 +22,7 @@
         type="text">
 
       <button class="btn btn--big sign-btn">
-        Sign in
+        Send
       </button>
     </form>
   </div>

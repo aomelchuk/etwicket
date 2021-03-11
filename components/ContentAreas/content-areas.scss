@@ -122,7 +122,6 @@
   &:hover{
     background: #5E3380;
     transition:opacity .5s;
-    height: 100%;
 
     .service-hover {
       display: flex;
@@ -133,7 +132,9 @@
   }
 
   @include screen('desktop-md') {
-    width: 31%;
+    width: 32%;
+    margin: 1% 0;
+    padding: toRem(24);
   }
 
   @include screen('mobile') {
@@ -150,6 +151,11 @@
     font-size: toRem(18);
     line-height: toRem(32);
     margin-top: toRem(24);
+
+    @include screen('desktop-md') {
+      margin-top: toRem(16);
+      line-height: toRem(24);
+    }
   }
 
   p {
