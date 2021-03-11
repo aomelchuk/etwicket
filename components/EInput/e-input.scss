@@ -1,0 +1,67 @@
+$error-color: #CA5555;
+
+.e-input {
+  width: 100%;
+  height: toRem(54);
+  border-radius: 0;
+  border-width:0;
+  padding:0 toRem(16);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  margin: toRem(8) 0;//delete!
+
+  &--small {
+    height: toRem(40);
+  }
+
+  input {
+    width: 100%;
+    height: toRem(24);
+    outline: 0;
+
+    &::placeholder {
+      color: #95A9B3;
+      font-size: toRem(14);
+    }
+  }
+  &.focus {
+    border:1px solid #95A9B2;
+  }
+
+  &.e-error {
+    border:1px solid $error-color;
+
+    >input {
+      color: $error-color !important;
+    }
+  }
+
+  &__icon-wrap {
+    position: relative;
+  }
+}
+
+.e-tooltip {
+  background-color: $error-color;
+  padding: toRem(8) toRem(16);
+  font-size: toRem(12);
+  position: absolute;
+  white-space: nowrap;
+  top: toRem(-44);
+  right: toRem(-27);
+
+  &::after {
+    content: '';
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    bottom: -6px;
+    right: 32px;
+    background-color: $error-color;
+    display: block;
+    transform: rotate(45deg)
+  }
+}
