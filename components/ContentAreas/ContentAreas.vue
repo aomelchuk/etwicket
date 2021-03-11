@@ -7,14 +7,12 @@
       <div class="col-lg-4 col-md-6 col-7 content-areas__info">
         <div class="show" id="contentAreaText" ref="contentAreaText">
           <div>
-            <h2>
-              Our <br class="mobile-br"> content areas
-            </h2>
+            <h2 v-html="staticData.header"></h2>
             <p>
-              We have both wide range of content and flexible picing.
+              {{staticData.bodyText}}
             </p>
             <button class="btn btn--big">
-              Explore
+              {{staticData.exploreBtn}}
             </button>
           </div>
         </div>
@@ -24,158 +22,34 @@
     <div class="container">
 
       <div class="services services--desktop" ref="services">
-        <div class="service">
-          <img src="img/service/car.svg" alt="">
-          <h3>Cars Rental</h3>
+        <div class="service" v-for="service in staticData.services" :key="service.header">
+          <img :src="service.icon" alt="">
+          <h3>{{service.header}}</h3>
           <p>
-            Access to a global car rental portfolio of over 500 quality international and local suppliers
+            {{service.description}}
           </p>
-          <a href="#" class="service-hover">
-            <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-          </a>
-        </div>
-        <div class="service">
-          <img src="img/service/flight.svg" alt="">
-          <h3>Flight Reservations</h3>
-          <p>
-            We offer the cheapest international and domestic ticket prices, which you can book online or after ariving
-          </p>
-          <a href="#" class="service-hover">
-            <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-          </a>
-        </div>
-        <div class="service">
-          <img src="img/service/hotel.svg" alt="">
-          <h3>Hotel Reservations</h3>
-          <p>
-            Over 500,000 hotels in 90,000 destinations with detailed descriptions and up-to-date info
-          </p>
-          <a href="#" class="service-hover">
-            <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-          </a>
-        </div>
-        <div class="service">
-          <img src="img/service/transfers.svg" alt="">
-          <h3>Transfers</h3>
-          <p>
-            20,000 Pick-up Points
-            in 194 countries with all types of services, including shared, private standard
-            & private luxury
-          </p>
-          <a href="#" class="service-hover">
-            <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-          </a>
-        </div>
-        <div class="service">
-          <img src="img/service/label.svg" alt="">
-          <h3>White label</h3>
-          <p>
-            Integrating ETWICKET into your own website is not only easy and seamless but it also allows you to display
-            your own brand and logo.
-          </p>
-          <a href="#" class="service-hover">
-            <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-          </a>
-        </div>
-        <div class="service">
-          <img src="img/service/xml.svg" alt="">
-          <h3>XMLOut APIs</h3>
-          <p>
-            Our Hotels API grants you access to all
-            of our products, powering your existing website to improve sales and customer service
-          </p>
-          <a href="#" class="service-hover">
-            <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
+          <a :href="service.href" class="service-hover">
+            <div class="service-hover__text">{{service.readMore}} <img src="img/right-arrow.svg" alt=""></div>
           </a>
         </div>
       </div>
       <div class="services services--mobile">
         <client-only>
           <agile :options="carouselOptions">
-            <div class="slide">
+            <div class="slide" v-for="service in staticData.services" :key="service.header">
               <div class="service">
-                <img src="img/service/car.svg" alt>
-                <h3>Cars Rental</h3>
+                <img :src="service.icon" alt="">
+                <h3>{{service.header}}</h3>
                 <p>
-                  Access to a global car rental portfolio of over 500 quality international and
-                  local suppliers
+                  {{service.description}}
                 </p>
-                <a href="#" class="service-hover">
-                  <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-                </a>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="service">
-                <img src="img/service/flight.svg" alt>
-                <h3>Flight Reservations</h3>
-                <p>
-                  We offer the cheapest international and domestic ticket prices, which you can
-                  book online or after ariving
-                </p>
-                <a href="#" class="service-hover">
-                  <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-                </a>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="service">
-                <img src="img/service/hotel.svg" alt>
-                <h3>Hotel Reservations</h3>
-                <p>
-                  Over 500,000 hotels in 90,000 destinations with detailed descriptions and
-                  up-to-date info
-                </p>
-                <a href="#" class="service-hover">
-                  <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-                </a>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="service">
-                <img src="img/service/transfers.svg" alt>
-                <h3>Transfers</h3>
-                <p>
-                  20,000 Pick-up Points
-                  in 194 countries with all types of services, including shared, private standard
-                  &amp; private luxury
-                </p>
-                <a href="#" class="service-hover">
-                  <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-                </a>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="service">
-                <img src="img/service/label.svg" alt>
-                <h3>White label</h3>
-                <p>
-                  Integrating ETWICKET into your own website is not only easy and seamless but it
-                  also allows you to display
-                  your own brand and logo.
-                </p>
-                <a href="#" class="service-hover">
-                  <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
-                </a>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="service">
-                <img src="img/service/xml.svg" alt>
-                <h3>XMLOut APIs</h3>
-                <p>
-                  Our Hotels API grants you access to all
-                  of our products, powering your existing website to improve sales and customer
-                  service
-                </p>
-                <a href="#" class="service-hover">
-                  <div class="service-hover__text">Read more <img src="img/right-arrow.svg" alt=""></div>
+                <a :href="service.href" class="service-hover">
+                  <div class="service-hover__text">{{service.readMore}} <img src="img/right-arrow.svg" alt=""></div>
                 </a>
               </div>
             </div>
           </agile>
         </client-only>
-
       </div>
     </div>
   </section>
@@ -188,6 +62,7 @@ import animation from '@/mixins/animation.js'
 
 export default {
   mixins: [animation],
+  props: ['staticData'],
   data() {
     return {
       carouselOptions: {

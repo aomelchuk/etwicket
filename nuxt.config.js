@@ -48,6 +48,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/style-resources',
+    'nuxt-i18n'
   ],
 
   styleResources: {
@@ -55,6 +56,20 @@ export default {
     scss: [
       '~assets/scss/*.scss'
     ]
+  },
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        name: 'English'
+      },
+      {
+        code: 'ru',
+        name: 'Русский'
+      }
+    ],
+    defaultLocale: 'en',
+    strategy: 'prefix'
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

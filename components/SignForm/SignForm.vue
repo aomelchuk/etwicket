@@ -1,16 +1,16 @@
 <template>
   <div class="register-form-wrapper">
-    <h2>Sign in to your account</h2>
+    <h2>{{texts.header}}</h2>
     <form
       class="register-form d-flex flex-column"
     >
-      <e-input :placeholder="'Enter your Username without ID'"></e-input>
-      <e-input :placeholder="'Enter your Password'"></e-input>
+      <e-input :placeholder="texts.placeholdersUsername"></e-input>
+      <e-input :placeholder="texts.placeholderPassword"></e-input>
 
       <button class="btn btn--big sign-btn">
-        Sign in
+        {{texts.signBtn}}
       </button>
-      <div class="sign-link-wrapper text-center">Don’t have an account? <a href="#" @click.prevent="openRegister" class="sign-link">Sign up</a> </div>
+      <div class="sign-link-wrapper text-center">{{texts.haveAcc}} <a href="#" @click.prevent="openRegister" class="sign-link">{{texts.signUp}}</a> </div>
     </form>
   </div>
 </template>
@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  props: ['texts'],
   data() {
     return {
 

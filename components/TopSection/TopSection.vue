@@ -3,20 +3,18 @@
     <div class="container d-flex">
       <div class="col-xl-6 col-md-6 col-sm-12 top-section__info">
         <div class="text-wrapper" id="#trigger2" ref="trigger2" >
-          <h1>Simplifying <br> your business trip</h1>
-          <p>
-            We make it simple to launch in the cloud and scale up as you grow – with an intuitive control panel, predictable pricing, team accounts, and more.
-          </p>
+          <h1 v-html="staticData.header"></h1>
+          <p>{{staticData.description}}</p>
           <div class="btn-wrapper">
             <button class="btn btn--clear" @click="openRegister">
-              Register
+              {{staticData.registerBtnText}}
               <img src="img/right-arrow.svg" class="btn_arrow" alt="">
             </button>
           </div>
         </div>
       </div>
       <div class="col-xl-6 col-md-6 col-sm-12 form-wrapper">
-        <SignForm @openRegister="openRegister"/>
+        <SignForm @openRegister="openRegister" :texts="staticData.signFormTexts"/>
       </div>
     </div>
   </section>
@@ -26,6 +24,7 @@
 import SignForm from '@/components/SignForm/SignForm.vue'
 
 export default {
+  props: ['staticData'],
   methods: {
     openRegister() {
       this.$emit('openRegister')

@@ -1,28 +1,28 @@
 <template>
   <div class="register-form-wrapper" id="reqForm">
-    <h2>Send your request</h2>
+    <h2>{{texts.header}}</h2>
     <form
       class="register-form d-flex flex-column"
     >
-      <input
-        placeholder="Enter your name"
+      <e-input
+        :placeholder="texts.placeholders.name"
         class="register-form_input"
-        >
-      <input
-        placeholder="Enter your phone number"
+        ></e-input>
+      <e-input
+        :placeholder="texts.placeholders.phone"
         class="register-form_input"
-        type="text">
-      <input
-        placeholder="Enter your email"
+        type="text"></e-input>
+      <e-input
+        :placeholder="texts.placeholders.email"
         class="register-form_input"
-        type="text">
-      <input
-        placeholder="Enter your company's name"
+        type="text"></e-input>
+      <e-input
+        :placeholder="texts.placeholders.companyName"
         class="register-form_input"
-        type="text">
+        type="text"></e-input>
 
       <button class="btn btn--big sign-btn">
-        Send
+        {{texts.sendBtn}}
       </button>
     </form>
   </div>
@@ -36,6 +36,7 @@ import animation from '@/mixins/animation.js'
 
 export default {
   mixins: [animation],
+  props: ['texts'],
   mounted() {
     if (!this.isMobile) {
       const animationSettings = {

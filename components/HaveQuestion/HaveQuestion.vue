@@ -4,15 +4,15 @@
       <div class="col-md-6 col-sm-12 have-question__info">
         <div class="show" id="questionText" ref="questionText">
           <div>
-            <h2>Have a questions?</h2>
+            <h2>{{staticData.header}}</h2>
             <p>
-              Feel free to contact us! Send your request and we will contact you as soon as posible.
+              {{staticData.description}}
             </p>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-sm-12">
-        <RequestForm/>
+        <RequestForm :texts="staticData.requestForm"/>
       </div>
       <div class="question-img-shadow">
         <div class="show" id="requestImg">
@@ -32,6 +32,7 @@ import animation from '@/mixins/animation.js'
 
 export default {
   mixins: [animation],
+  props: ['staticData'],
   mounted() {
     if (!this.isMobile) {
       const questionTextWidth = this.$refs.questionText.clientWidth

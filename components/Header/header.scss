@@ -416,6 +416,10 @@ section h2 {
     flex-direction: column;
     padding: 0;
 
+    .submenu {
+      box-shadow: none;
+    }
+
     li {
       padding:toRem(12) 0 !important;
     }
