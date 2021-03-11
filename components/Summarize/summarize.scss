@@ -102,6 +102,9 @@
     font-size: toRem(36);
     line-height: toRem(32);
     color: #131416;
+    @include screen('desktop-md') {
+      font-size: toRem(34);
+    }
   }
 
   &__text {
@@ -110,6 +113,10 @@
     line-height: toRem(24);
     margin-top: toRem(8);
     color: #000;
+
+    @include screen('desktop-md') {
+      line-height: toRem(16);
+    }
 
     @include screen('mobile') {
       font-size: toRem(12);
